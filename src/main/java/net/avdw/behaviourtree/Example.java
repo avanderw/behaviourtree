@@ -19,42 +19,42 @@ public class Example {
         
         ABehaviourTree walkToDoor = new ABehaviourTree() {
             @Override
-            public ABehaviourTree.Status process() {
+            public ABehaviourTree.Status process(Object state) {
                 Logger.debug("walkToDoor");
                 return ABehaviourTree.Status.Success;
             }
         };
         ABehaviourTree openDoor = new ABehaviourTree() {
             @Override
-            public ABehaviourTree.Status process() {
+            public ABehaviourTree.Status process(Object state) {
                 Logger.debug("openDoor");
                 return ABehaviourTree.Status.Failure;
             }
         };
         ABehaviourTree unlockDoor = new ABehaviourTree() {
             @Override
-            public ABehaviourTree.Status process() {
+            public ABehaviourTree.Status process(Object state) {
                 Logger.debug("unlockDoor");
                 return ABehaviourTree.Status.Success;
             }
         };
         ABehaviourTree smashDoor = new ABehaviourTree() {
             @Override
-            public ABehaviourTree.Status process() {
+            public ABehaviourTree.Status process(Object state) {
                 Logger.debug("smashDoor");
                 return ABehaviourTree.Status.Success;
             }
         };
         ABehaviourTree walkThroughDoor = new ABehaviourTree() {
             @Override
-            public ABehaviourTree.Status process() {
+            public ABehaviourTree.Status process(Object state) {
                 Logger.debug("walkThroughDoor");
                 return ABehaviourTree.Status.Success;
             }
         };
         ABehaviourTree closeDoor = new ABehaviourTree() {
             @Override
-            public ABehaviourTree.Status process() {
+            public ABehaviourTree.Status process(Object state) {
                 Logger.debug("closeDoor");
                 return ABehaviourTree.Status.Success;
             }
@@ -63,7 +63,7 @@ public class Example {
         ABehaviourTree behaviourTree = new ABehaviourTree.Sequence();
         behaviourTree.add(walkToDoor, new ABehaviourTree.Selector(openDoor, new ABehaviourTree.Sequence(unlockDoor, openDoor), smashDoor), walkThroughDoor, closeDoor);
 
-        behaviourTree.process();
+        behaviourTree.process(new Object());
     }
 
 }
